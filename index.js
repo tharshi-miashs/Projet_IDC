@@ -28,13 +28,11 @@ fetch(url_pays)
   [	
     {
       "devise": "EUR",    
-          "pays": ["Austria", "Belgium", "Cyprus", "Estonia", "Finland", "France", "Germany", "Greece", "Ireland",
-                  "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Portugal", "Slovakia",
-                  "Slovenia", "Spain"]
+          "pays": ["Spain"]
     },
     {
       "devise": "AUD",    
-      "pays": ["Australia", "Kiribati", "Nauru", "Tuvalu", "Norfolk Island", "Christmas Island", "Keeling"]
+      "pays": ["Australia"]
     },
     {
       "devise": "BGN",    
@@ -50,7 +48,7 @@ fetch(url_pays)
       },
     {
           "devise": "CHF",
-          "pays": ["Switzerland", "Liechtenstein"]
+          "pays": ["Switzerland"]
       },
     {
           "devise": "CNY",
@@ -62,12 +60,11 @@ fetch(url_pays)
       },
     {
           "devise": "DKK",
-          "pays": ["Denmark", "Faroe Islands", "Greenland"]
+          "pays": ["Denmark"]
       },
     {
           "devise": "GBP",
-          "pays": [" United Kingdom","Great Britain", "Gibraltar", "Northern Ireland", "Isle of Man",
-                  "Jersey", "Guernsey", "South Georgia", "South Sandwich Islands", "British Indian Ocean Territory", "Saint Helena"]
+          "pays": [" United Kingdom"]
       },
     {
           "devise": "HKD",
@@ -83,11 +80,11 @@ fetch(url_pays)
       },
       {
           "devise": "ILS",
-          "pays": ["Israel", "Palestine"]
+          "pays": ["Israel"]
       },
       {
           "devise": "INR",
-          "pays": ["India", "Bhutan"]
+          "pays": ["India"]
       },
       {
           "devise": "ISK",
@@ -115,7 +112,7 @@ fetch(url_pays)
       },
       {
           "devise": "NZD",
-          "pays": ["New Zealand", "Cook Islands", "Niue", "Pitcairn", "Tokelau"]
+          "pays": ["New Zealand"]
       },
       {
           "devise": "PHP",
@@ -151,12 +148,10 @@ fetch(url_pays)
       },
       {
           "devise": "USD",
-          "pays": ["American Samoa", "Bonaire", "Sint Eustatius", "Saba", "United States Minor Outlying Islands",
-                    "Virgin Islands", "Cambodia", "Ecuador", "El Salvador", "Guam", "Marshall Islands", "Micronesia ", "Northern Mariana Islands",
-                    "Palau", "Panama", "Puerto Rico","Timor-Leste","Turks", "Caicos Islands", "United States of America", "Zimbabwe"]
+          "pays": ["American Samoa"]
       },
       {
           "devise": "ZAR",
-          "pays": ["South Africa", "Namibia", "Lesotho", "Eswatini"]
+          "pays": ["South Africa]
       }
   ]
