@@ -14,12 +14,12 @@ monnaie en fonction des pays qui y sont associés.
   Contient les informations spécifiques pour tous les pays.
 
 ## Difficultés
-** Répartition des tâches ** : Après avoir pris connaissance des API, il a été difficile
+**Répartition des tâches** : Après avoir pris connaissance des API, il a été difficile
 de s'attribuer correctement des tâches; deux membre ont convergées petit à petit en effectuer le même travail.
-** Hétérogénéité des compétences : 
+**Hétérogénéité des compétences** : 
 
 ## Apport du Projet
-** Gestion git **
+**Gestion git**
 
 # Projet_IDC
  site https://tharshi-miashs.github.io/Projet_IDC/
