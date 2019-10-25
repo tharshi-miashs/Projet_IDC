@@ -54,3 +54,10 @@ function fetchTaux(c,devise){
     })
   }
 }
+var the_date = document.getElementById('date');
+var d = new Date();
+var mm = d.getMonth() + 1;
+var dd = d.getDate();
+var yy = d.getFullYear();
+var myDateString = yy + '-' + mm + '-' + dd;
+the_date.innerText=myDateString;
