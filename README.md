@@ -17,7 +17,7 @@ Connecter deux sources d'information différentes.
   On a utilisé une requête qui renvoie les informations de chaque pays passé dans les paramétres.
 
 ## Difficultés
-**Répartition des tâches** : Après avoir pris connaissance des API, il a été difficile
+**Répartition des tâches** : Après avoir pris connaissance des API, il a été difficile  
 de s'attribuer correctement des tâches; deux membre ont convergées petit à petit en effectuer le même travail.
 **Hétérogénéité des compétences** : 
 
