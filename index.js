@@ -16,11 +16,16 @@ var liste_pays = [ "Åland Islands","Andorra","Austria","Belgium","Estonia","Fin
                   "Puerto Rico","Timor-Leste","Turks and Caicos Islands","United States of America"
                   ];
 
+
 var url_taux = "https://api.exchangeratesapi.io/latest?symbols=";
 var url_pays = "https://restcountries.eu/rest/v2/name/";
 
 var result_pays;
 var resu_taux;
+
+var balise_img_start = '<img src="';
+var balise_img_end = '">';
+
 
 
 for (i = 0; i < liste_pays.length; i++) {
@@ -40,26 +45,35 @@ for (i = 0; i < liste_pays.length; i++) {
           var c7 = row.insertCell(6);
           var devise = result_pays[0].currencies[0].code;
           c1.innerText = result_pays[0].name;
+          c2.innerHTML = balise_img_start + result_pays[0].flag + balise_img_end;
           c3.innerText = result_pays[0].capital;
           c4.innerText = result_pays[0].region;
           c5.innerText = result_pays[0].population;
           c6.innerText = devise;
-          fetchTaux(c7,devise);
+          fetchTaux(c7, devise);
         })
     })
 
 }
 
-function fetchTaux(c,devise){
+function fetchTaux(c, devise) {
   if (devise == "EUR") {
     c.innerText = 1;
   }else{
     fetch(url_taux + devise)
-      .then(function(response){
+      .then(function(response) {
         response.json()
-        .then(function(data){
-          c.innerText = data.rates[devise];
-        })
-    })
+          .then(function(data) {
+            c.innerText = data.rates[devise];
+          })
+      })
   }
 }
+
+var the_date = document.getElementById('date');
+var d = new Date();
+var mm = d.getMonth() + 1;
+var dd = d.getDate();
+var yy = d.getFullYear();
+var myDateString = yy + '-' + mm + '-' + dd;
+the_date.innerText = myDateString;
