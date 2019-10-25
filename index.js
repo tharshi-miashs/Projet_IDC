@@ -1,17 +1,21 @@
 //Récupérer les infomartions d'un pays en fonction d'une liste de nom de pays
 // et ne récupérer que quelques caractéristiques dessus
 
-var liste_pays = [ "Spain","Australia","Bulgaria","Brazil","Canada","Switzerland","China",
-                    "Czech Republic","Denmark","United Kingdom","Hong Kong","Hungary","Indonesia","Israel","India",
-                    "Iceland","Japan","Korea (Republic of)","Mexico","Malaysia","Norway","New Zealand","Philippines","Poland","Romania",
-                    "Russia","Sweden","Thailand","Turkey","American Samoa","South Africa"
-                  ];
+var liste_pays = ["Spain", "Australia", "Bulgaria", "Brazil", "Canada", "Switzerland", "China",
+  "Czech Republic", "Denmark", "United Kingdom", "Hong Kong", "Hungary", "Indonesia", "Israel", "India",
+  "Iceland", "Japan", "Korea (Republic of)", "Mexico", "Malaysia", "Norway", "New Zealand", "Philippines", "Poland", "Romania",
+  "Russia", "Sweden", "Thailand", "Turkey", "American Samoa", "South Africa"
+];
 
 var url_taux = "https://api.exchangeratesapi.io/latest?symbols=";
 var url_pays = "https://restcountries.eu/rest/v2/name/";
 
 var result_pays;
 var resu_taux;
+
+var balise_img_start = '<img src="';
+var balise_img_end = '">';
+
 
 
 for (i = 0; i < liste_pays.length; i++) {
@@ -31,26 +35,27 @@ for (i = 0; i < liste_pays.length; i++) {
           var c7 = row.insertCell(6);
           var devise = result_pays[0].currencies[0].code;
           c1.innerText = result_pays[0].name;
+          c2.innerHTML = balise_img_start + result_pays[0].flag + balise_img_end;
           c3.innerText = result_pays[0].capital;
           c4.innerText = result_pays[0].region;
           c5.innerText = result_pays[0].population;
           c6.innerText = devise;
-          fetchTaux(c7,devise);
+          fetchTaux(c7, devise);
         })
     })
 
 }
 
-function fetchTaux(c,devise){
+function fetchTaux(c, devise) {
   if (devise == "EUR") {
     c.innerText = 0;
-  }else{
+  } else {
     fetch(url_taux + devise)
-      .then(function(response){
+      .then(function(response) {
         response.json()
-        .then(function(data){
-          c.innerText = data.rates[devise];
-        })
-    })
+          .then(function(data) {
+            c.innerText = data.rates[devise];
+          })
+      })
   }
 }
