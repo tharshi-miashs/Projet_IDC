@@ -49,7 +49,15 @@ h1
 	font-weight:bold;
 	color : #005858;
 	text-align: center;
-	margin-top:35px;
+	margin-top:25px;
+}
+
+h2
+{
+	width:1000;
+	font-weight:bold;
+	color : #005858;
+	text-align: center;
 }
 
 .boite_logo
