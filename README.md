@@ -16,10 +16,15 @@ Connecter deux sources d'information différentes.
   Contient les informations spécifiques pour tous les pays.
   On a utilisé une requête qui renvoie les informations de chaque pays passé dans les paramétres.
 
+## Architecture
+Pour harmoniser les deux bases de données nous avons due faire un tableau de la liste des pays dont le deuxième API nous fournissait le taux de change.
+
 ## Difficultés
-**Répartition des tâches** : Après avoir pris connaissance des API, il a été difficile  
-de s'attribuer correctement des tâches; deux membre ont convergées petit à petit en effectuer le même travail.
-**Hétérogénéité des compétences** : 
+**Répartition des tâches** : Après avoir pris connaissance des API, il a été difficile de s'attribuer correctement des tâches; deux membre ont convergées petit à petit en effectuer le même travail.
+**Hétérogénéité des compétences** : Chacun de nous avions des difficultés, il y a donc eu séparément un travail sur  
+la mise en forme des données (html/css) et un travail sur les requêtes d'API
+
+Pour harmoniser les deux bases de données nous avons due faire un tableau de la liste des pays dont le deuxième API nous fournissait le taux de change.
 
 ## Apport du Projet
 **Gestion git**
