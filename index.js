@@ -24,7 +24,7 @@ var result_pays;
 var resu_taux;
 
 var balise_img_start = '<img src="';
-var balise_img_end = '">';
+var balise_img_end = '" id="flag">';
 
 
 

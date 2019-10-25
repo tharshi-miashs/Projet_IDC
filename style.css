@@ -6,13 +6,18 @@ body
 	font-family : Albertus MT;
 }
 
+img
+{
+	width : 80px;
+	height : 80px;
+}
 
 #tableau
 {
 	background-color: #008080;
 	width:1045px;
-	margin-left:60px;
-	margin-top:40px;
+	margin-left:50px;
+	margin-top:200px;
 	float:left;
 	color :#FFFFFF;
 	border-collapse : collapse;
@@ -31,7 +36,7 @@ td
 	width:143px;
 	height : 80px;
 	border: 2px solid white;
-	background-color: #D0D0D0;
+	background-color: #696969;
 	padding-left : 10px;
 }
 
@@ -49,7 +54,20 @@ h1
 	font-weight:bold;
 	color : #005858;
 	text-align: center;
-	margin-top:35px;
+	margin-top:25px;
+}
+
+h2
+{
+	width:1000;
+	font-weight:bold;
+	color : #005858;
+	text-align: center;
+}
+
+.boite
+{
+	position : absolute ;
 }
 
 .boite_logo
@@ -68,10 +86,10 @@ h1
 
 .boite_titre
 {
-	width: 910px;
+	width: 900px;
 	height :115px;
 	float:right;
-	margin-right:40px;
+	margin-right:60px;
 	margin-top:40px;
 	border-width:3px;
 	border-style:ridge;
