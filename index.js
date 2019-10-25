@@ -133,7 +133,7 @@ var liste_pays = [
   ];
 
 var country_list = ['France', 'Germany', 'Ethiopia'];
-var url_taux = "https://api.exchangeratesapi.io/latest";
+var url_taux = "https://api.exchangeratesapi.io/latest?symbols=";
 var url_pays = "https://restcountries.eu/rest/v2/name/";
 
 var result_pays;
@@ -166,14 +166,19 @@ for (i = 0; i < liste_pays.length; i++) {
 
 
 
-fetch(url_taux)
-  .then(function(response) {
-    response.json()
-      .then(function(data) {
-        resu_taux = data;
-        //console.log(resu_taux.rates);
-      })
-  })
+function fetchTaux(c,devise){
+  if (devise == "EUR") {
+    c.innerText = 0;
+  }else{
+    fetch(url_taux + devise)
+      .then(function(response){
+        response.json()
+        .then(function(data){
+          c.innerText = data.rates[devise];
+        })
+    })
+  }
+}
 
 
 
