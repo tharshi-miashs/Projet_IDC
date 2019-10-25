@@ -1,10 +1,19 @@
 //Récupérer les infomartions d'un pays en fonction d'une liste de nom de pays
 // et ne récupérer que quelques caractéristiques dessus
 
-var liste_pays = [ "Spain","Australia","Bulgaria","Brazil","Canada","Switzerland","China",
-                    "Czech Republic","Denmark","United Kingdom","Hong Kong","Hungary","Indonesia","Israel","India",
-                    "Iceland","Japan","Korea (Republic of)","Mexico","Malaysia","Norway","New Zealand","Philippines","Poland","Romania",
-                    "Russia","Sweden","Thailand","Turkey","American Samoa","South Africa"
+var liste_pays = [ "Åland Islands","Andorra","Austria","Belgium","Estonia","Finland","France","French Guiana","French Southern Territories","Germany",
+                  "Spain","Greece","Guadeloupe","Holy See","Ireland","Italy","Latvia","Lithuania","Luxembourg","Malta","Martinique","Mayotte",
+                  "Monaco","South Georgia","South Sandwich Islands","British Indian Ocean Territory","American Samoa","Turkey",
+                  "Montenegro","Netherlands","Portugal","Republic of Kosovo","Réunion","Saint Barthélemy","Saint Martin (French part)",
+                  "Saint Pierre and Miquelon","San Marino","Slovakia","Slovenia","Antarctica","Australia","Christmas Island","Heard Island",
+                  "Kiribati","Nauru","Norfolk Island","Tuvalu","Bulgaria","Brazil","Canada","Switzerland","Liechtenstein",
+                  "China","Czech Republic","Denmark","Faroe Islands","Greenland","United Kingdom","Guernsey","Isle of Man","Jersey",
+                  "Great Britain","Northern Ireland","Hong Kong","Hungary","Indonesia","Israel","Palestine","India","Cook Islands",
+                  "Iceland","Japan","Korea (Republic of)","Mexico","Malaysia","Norway","New Zealand","Niue","Pitcairn","Tokelau",
+                  "Philippines","Poland","Romania","Russia","Sweden","Thailand","South Africa","American Samoa","Bonaire, Sint Eustatius and Saba",
+                  "Ecuador","El Salvador","Guam","Marshall Islands","Northern Mariana Islands",
+                  "British Indian Ocean Territory","United States Minor Outlying Islands","Virgin Islands (U.S.)",
+                  "Puerto Rico","Timor-Leste","Turks and Caicos Islands","United States of America"
                   ];
 
 var url_taux = "https://api.exchangeratesapi.io/latest?symbols=";
@@ -43,7 +52,7 @@ for (i = 0; i < liste_pays.length; i++) {
 
 function fetchTaux(c,devise){
   if (devise == "EUR") {
-    c.innerText = 0;
+    c.innerText = 1;
   }else{
     fetch(url_taux + devise)
       .then(function(response){
