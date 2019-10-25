@@ -2,9 +2,9 @@
 // et ne récupérer que quelques caractéristiques dessus
 
 var liste_pays = [ "Spain","Australia","Bulgaria","Brazil","Canada","Switzerland","China",
-                    "Czech Republic","Denmark"," United Kingdom","Hong Kong","Hungary","Indonesia","Israel","India",
-                    "Iceland","Japan","Korea","Mexico","Malaysia","Norway","New Zealand","Philippines","Poland","Romania",
-                    "Russia","Sweden","Singapore","Thailand","Turkey","American Samoa","South Africa"
+                    "Czech Republic","Denmark","United Kingdom","Hong Kong","Hungary","Indonesia","Israel","India",
+                    "Iceland","Japan","Korea (Republic of)","Mexico","Malaysia","Norway","New Zealand","Philippines","Poland","Romania",
+                    "Russia","Sweden","Thailand","Turkey","American Samoa","South Africa"
                   ];
 
 var url_taux = "https://api.exchangeratesapi.io/latest?symbols=";
@@ -15,7 +15,7 @@ var resu_taux;
 
 
 for (i = 0; i < liste_pays.length; i++) {
-  lien = url_pays + liste_pays[i].pays[0];
+  lien = url_pays + liste_pays[i];
   fetch(lien)
     .then(function(response) {
       response.json()
@@ -28,18 +28,18 @@ for (i = 0; i < liste_pays.length; i++) {
           var c4 = row.insertCell(3);
           var c5 = row.insertCell(4);
           var c6 = row.insertCell(5);
+          var c7 = row.insertCell(6);
+          var devise = result_pays[0].currencies[0].code;
           c1.innerText = result_pays[0].name;
           c3.innerText = result_pays[0].capital;
           c4.innerText = result_pays[0].region;
           c5.innerText = result_pays[0].population;
+          c6.innerText = devise;
+          fetchTaux(c7,devise);
         })
     })
 
 }
-
-
-
-
 
 function fetchTaux(c,devise){
   if (devise == "EUR") {
@@ -54,9 +54,3 @@ function fetchTaux(c,devise){
     })
   }
 }
-
-
-
-
-console.log(liste_pays[0].pays[0]);
-console.log(liste_pays.length);
