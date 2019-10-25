@@ -68,10 +68,10 @@ h1
 
 .boite_titre
 {
-	width: 905px;
+	width: 910px;
 	height :115px;
 	float:right;
-	margin-right:60px;
+	margin-right:40px;
 	margin-top:40px;
 	border-width:3px;
 	border-style:ridge;
