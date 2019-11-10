@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-  <meta charset="utf-8">
-  <title>Country and exchange Rate</title>
-  <link rel="icon" type="image/png" href="image\logo.png" />
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body >
-<div class="boite">
-	<div class="boite_logo">
-		<IMG SRC = "image\logo.png" NAME= "logo" ALT="Logo" align="center" id="logo"/>
-	</div>
-	<div class="boite_titre">
-		<h1>COUNTRY AND LIVE EXCHANGE RATE</h1>
-    <h2 id = "date">  </h2>
-	</div>
-</div>
-	<table id = "tableau"  align ="center">
+	<head>
+	  <meta charset="utf-8">
+	  <title>Country and exchange Rate</title>
+	  <link rel="icon" type="image/png" href="image\logo.png" />
+	  <link rel="stylesheet" href="style.css"/>
+	</head>
+	
+	<body >
+	
+		<div class="boite">
+		
+			<div class="boite_logo">
+				<IMG SRC = "image\logo.png" NAME= "logo" ALT="Logo" align="center" id="logo"/>
+			</div>
+			
+			<div class="boite_titre">
+				<h1>COUNTRY AND LIVE EXCHANGE RATE</h1>
+				<h2 id = "date">  </h2>
+			</div>
+			
+		</div>
 
-		<thead>
-			<tr>
-				<th>Country</th>
-				<th>Flag </th>
-				<th>Capital</th>
-				<th>Continent</th>
-				<th>Population</th>
-				<th>Currency</th>
-				<th>Rate (base = €)</th>
-			</tr>
+		<div class = 'texte'>
+				<input type= "text" name="" id = "Entree" placeholder = "Country" onkeyup ="Fonction_recherche()">
+		</div>
 
-      </thead>
-	</table>
-
-</body>
-<script src="index.js"></script>
+		<table id = "tableau"  align ="center">
+			<thead>
+				<tr>
+					<th>Country</th>
+					<th>Flag </th>
+					<th>Capital</th>
+					<th>Continent</th>
+					<th>Population</th>
+					<th>Currency</th>
+					<th>Rate (base = €)</th>
+				</tr>
+			</thead>
+		</table>
+		
+		<script src="index.js"></script>
+	</body>
 </html>

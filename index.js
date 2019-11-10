@@ -1,65 +1,74 @@
-//Récupérer les infomartions d'un pays en fonction d'une liste de nom de pays
-// et ne récupérer que quelques caractéristiques dessus
-
-var liste_pays = ["Spain", "Australia", "Bulgaria", "Brazil", "Canada", "Switzerland", "China",
-  "Czech Republic", "Denmark", "United Kingdom", "Hong Kong", "Hungary", "Indonesia", "Israel", "India",
-  "Iceland", "Japan", "Korea (Republic of)", "Mexico", "Malaysia", "Norway", "New Zealand", "Philippines", "Poland", "Romania",
-  "Russia", "Sweden", "Thailand", "Turkey", "American Samoa", "South Africa"
-];
-
-var url_taux = "https://api.exchangeratesapi.io/latest?symbols=";
-var url_pays = "https://restcountries.eu/rest/v2/name/";
-
-var result_pays;
-var resu_taux;
-
-var balise_img_start = '<img src="';
-var balise_img_end = '" id="flag">';
+// Récupérer les infomartions d'un pays en fonction d'une liste de devises
+// et récupérer quelques caractéristiques sur le pays
 
 
+// API utilisées :
+var url_rate = "https://api.exchangeratesapi.io/latest?symbols";
+var url_country = "https://restcountries.eu/rest/v2/all";
 
-for (i = 0; i < liste_pays.length; i++) {
-  lien = url_pays + liste_pays[i];
-  fetch(lien)
-    .then(function(response) {
-      response.json()
-        .then(function(data) {
-          result_pays = data;
-          var row = tableau.insertRow(1);
-          var c1 = row.insertCell(0);
-          var c2 = row.insertCell(1);
-          var c3 = row.insertCell(2);
-          var c4 = row.insertCell(3);
-          var c5 = row.insertCell(4);
-          var c6 = row.insertCell(5);
-          var c7 = row.insertCell(6);
-          var devise = result_pays[0].currencies[0].code;
-          c1.innerText = result_pays[0].name;
-          c2.innerHTML = balise_img_start + result_pays[0].flag + balise_img_end;
-          c3.innerText = result_pays[0].capital;
-          c4.innerText = result_pays[0].region;
-          c5.innerText = result_pays[0].population;
-          c6.innerText = devise;
-          fetchTaux(c7, devise);
-        })
-    })
+// Variables :
+var result_rate;
+var currency;
+var currencies = []; // Tableau qui permettra de structurer les données de l'API url_rate
+currencies.push({ name: "EUR", rate: 1 }); // Devise de base du taux de change
+var result_country;
+var country;
+var rate_country;
+var balise_img_start = '<img src="'; // Permet de restreindre la taille du drapeau
+var balise_img_end = '" id="flag">'; // Permet de restreindre la taille du drapeau
 
-}
 
-function fetchTaux(c, devise) {
-  if (devise == "EUR") {
-    c.innerText = 0;
-  } else {
-    fetch(url_taux + devise)
-      .then(function(response) {
-        response.json()
-          .then(function(data) {
-            c.innerText = data.rates[devise];
+fetch(url_rate)
+  .then(function (response) {
+    response.json()
+      .then(function (data) {
+        result_rate = data; // Stocke le résultat de l'API url_rate dans la variable result_rate
+
+        // Structure le résultat dans le tableau currencies
+        for (currency in result_rate.rates) {
+          currencies.push({ name: currency, rate: result_rate.rates[currency] });
+        }
+
+        fetch(url_country)
+          .then(function (response) {
+            response.json()
+              .then(function (data) {
+                result_country = data; // Stocke le résultat de l'API url_country dans la variable result_country
+
+                // Parcourt tous les pays présents dans result_country
+                for (country in result_country) {
+                  rate_country = result_country[country].currencies[0].code; // Stocke la devise associée au pays dans la variable rate_country
+
+                  // Parcourt le tableau currencies
+                  for (i in currencies) {
+
+                    // Regarde si le taux de change de la devise du pays est stocké dans le tableau currencies
+                    // Si c'est le cas, il remplit des informations sur le pays dans le tableau row
+                    if (rate_country == currencies[i].name) {
+                      var row = tableau.insertRow(1);
+                      var c1 = row.insertCell(0);
+                      var c2 = row.insertCell(1);
+                      var c3 = row.insertCell(2);
+                      var c4 = row.insertCell(3);
+                      var c5 = row.insertCell(4);
+                      var c6 = row.insertCell(5);
+                      var c7 = row.insertCell(6);
+                      c1.innerText = result_country[country].name; // Renseigne le nom du pays
+                      c2.innerHTML = balise_img_start + result_country[country].flag + balise_img_end; // Renseigne le drapeau du pays
+                      c3.innerText = result_country[country].capital; // Renseigne la capitale du pays
+                      c4.innerText = result_country[country].region; // Renseigne le continent sur lequel se situe le pays
+                      c5.innerText = result_country[country].population; // Renseigne le nombre d'habitants du pays
+                      c6.innerText = currencies[i].name; // Renseigne le nom de la devise utilisée dans le pays
+                      c7.innerText = currencies[i].rate + " " + result_country[country].currencies[0].symbol; // Renseigne la valeur d'un euro dans la devise du pays précisée par le symbole associé 
+                    }
+                  }
+                }
+              })
           })
       })
-  }
-}
+  });
 
+// Affiche la date :
 var the_date = document.getElementById('date');
 var d = new Date();
 var mm = d.getMonth() + 1;
@@ -67,3 +76,23 @@ var dd = d.getDate();
 var yy = d.getFullYear();
 var myDateString = yy + '-' + mm + '-' + dd;
 the_date.innerText = myDateString;
+
+
+const Fonction_recherche = () =>{
+	let filter = document.getElementById('Entree').value.toUpperCase();
+	let maTable = document.getElementById('tableau');
+	let tr = maTable.getElementsByTagName('tr');
+				
+	for (var i = 0; i<tr.length; i++){
+		let td = tr[i].getElementsByTagName('td')[0];
+					
+		if(td){
+			let textvalue = td.textContent || td.innerHTML; 
+			if(textvalue.toUpperCase().indexOf(filter)>-1){
+				tr[i].style.display = "";
+			}else{
+				tr[i].style.display = "none";
+			}
+		}
+	}
+}

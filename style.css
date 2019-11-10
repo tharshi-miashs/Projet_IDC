@@ -9,7 +9,6 @@ body
 img
 {
 	width : 80px;
-	height : 80px;
 }
 
 #tableau
@@ -17,7 +16,7 @@ img
 	background-color: #008080;
 	width:1045px;
 	margin-left:50px;
-	margin-top:200px;
+	margin-top:10px;
 	float:left;
 	color :#FFFFFF;
 	border-collapse : collapse;
@@ -35,10 +34,12 @@ td
 {
 	width:143px;
 	height : 80px;
-	border: 2px solid white;
-	background-color: #696969;
+	border: 2px solid white ;
+	background-color: #E6E6E6;
 	padding-left : 10px;
+	color : #000000;
 }
+
 
 
 #logo
@@ -75,7 +76,7 @@ h2
 	width: 115px;
 	height :115px;
 	float:left;
-	margin-left:60px;
+	margin-left:50px;
 	margin-top:40px;
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
@@ -86,10 +87,10 @@ h2
 
 .boite_titre
 {
-	width: 900px;
+	width: 910px;
 	height :115px;
-	float:right;
-	margin-right:60px;
+	left:right;
+	margin-left:175px;
 	margin-top:40px;
 	border-width:3px;
 	border-style:ridge;
@@ -97,3 +98,21 @@ h2
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
 }
+
+
+.texte
+{
+	width: 910px;
+	float:right;
+	margin-right:180px;
+	margin-top:200px;
+}
+
+input{
+	padding:4px;
+	font-size:14px;
+	font-family : Albertus MT; 
+	border: 2px solid #A4A4A4;
+	background: transparent;	
+}
+
