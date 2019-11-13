@@ -18,7 +18,7 @@ Notre Projet a pour but de faire une visualisation des pays avec la monnaie qu'i
 Pour harmoniser les deux bases de données nous avons due faire un tableau de la liste des pays dont le deuxième API nous fournissait le taux de change.
 
 ## Cas d'utilisation
-*On souhaite effectuer une année d'étude à Stockholm*
+*On souhaite effectuer une année d'étude à Stockholm*. 
 On veut connaitre la monnaie de la Suède et son taux de change avant de partir: Nous pouvons cherche le pays dans le tableau par son drapeau ou bien en tapant son nom dans la barre de recherche. Nous pouvons voir que la Suède a pour monnaie la couronne (kr) et que 1 euro vaut en ce moment au alentour de 10 kr.
 
 ## Difficultés
