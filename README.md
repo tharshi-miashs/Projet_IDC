@@ -29,9 +29,7 @@ la mise en forme des données (html/css) et un travail sur les requêtes d'API
 Pour harmoniser les deux bases de données nous avons due faire un tableau de la liste des pays dont le deuxième API nous fournissait le taux de change.
 
 ## Apport du Projet
-**Gestion git**  
-**Manipulation des fetch** : Ce projet nous a appris à interroger aux moins deux api pour fournir les données à notre mise en
-forme html.  
+**Gestion git**
 **Utilisation de données** : Nous avions manipuler des données sous format JSON grâce à JavaScript et conclu qu'il est important de comprendre la structure de ces données pour savoir comment les croiser efficacement.
 
 # Projet_IDC
