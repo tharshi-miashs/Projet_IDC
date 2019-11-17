@@ -15,7 +15,7 @@ Notre Projet a pour but de faire une visualisation des pays avec la monnaie qu'i
   On a utilisé une requête qui renvoie les informations de chaque pays passé dans les paramétres.
 
 ## Architecture
-Pour harmoniser les deux bases de données nous avons due faire un tableau de la liste des pays dont le deuxième API nous fournissait le taux de change.
+Nous avons récupéré les devises présentes dans l'API exchange rates et de faire un filtre dans l'API des informations et ne laisser apparaitre que les pays utilisant ces devises.
 
 ## Cas d'utilisation
 *On souhaite effectuer une année d'étude à Stockholm*. 
