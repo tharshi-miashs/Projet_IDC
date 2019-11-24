@@ -55,7 +55,7 @@ fetch(url_rate)
                        if ((result_country[country].capital != "")
                        & (result_country[country].region != "")
                        & (result_country[country].population != "0")
-                       & (result_country[country].currencies[0].symbol != "null")){
+                       & (result_country[country].currencies[0].symbol != null)){
                         var row = tableau.insertRow(1);
                         var c1 = row.insertCell(0);
                         var c2 = row.insertCell(1);
