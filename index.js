@@ -51,8 +51,11 @@ fetch(url_rate)
                     // On regarde si le taux de change de la devise du pays est stocké dans le tableau currencies
                     // Si c'est le cas, il remplit des informations sur le pays dans le tableau row
                     // On s'assure d'abord que les attributs dans l'api ne soient pas vides
-                    if ((result_country[country].capital != "") & (result_country[country].region != "")) {
-                      if (rate_country == currencies[i].name) {
+                     if (rate_country == currencies[i].name){
+                       if ((result_country[country].capital != "")
+                       & (result_country[country].region != "")
+                       & (result_country[country].population != "")
+                       & (result_country[country].currencies != "")){
                         var row = tableau.insertRow(1);
                         var c1 = row.insertCell(0);
                         var c2 = row.insertCell(1);
