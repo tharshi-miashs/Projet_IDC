@@ -3,108 +3,113 @@
 
 
 // API utilisées :
-var url_rate = "https://api.exchangeratesapi.io/latest?symbols";
-var url_country = "https://restcountries.eu/rest/v2/all";
+let url_rate = "https://api.exchangeratesapi.io/latest?symbols";
+let url_country = "https://restcountries.eu/rest/v2/all";
 
 // Variables :
-var result_rate;
-var currency;
-var currencies = []; // Tableau qui permettra de structurer les données de l'API url_rate
+let result_rate;
+let currency;
+let currencies = []; // Tableau qui permettra de structurer les données de l'API url_rate
 currencies.push({
-  name: "EUR",
-  rate: 1
+    name: "EUR",
+    rate: 1
 }); // Devise de base du taux de change
-var result_country;
-var country;
-var rate_country;
-var balise_img_start = '<img src="'; // Permet de restreindre la taille du drapeau
-var balise_img_end = '" id="flag">'; // Permet de restreindre la taille du drapeau
+let result_country;
+let country;
+let rate_country;
+let tableau = document.getElementById("tbody"); // tableau contenant les informations sur les pays
+let balise_img_start = '<img src="'; // Permet d'enregistrer le tableau dans une balise
+let balise_img_end = '" id="flag">'; // Permet d'enregistrer le tableau dans une balise
 
-
+// Récupération date de mise à jour des devises
+let the_date = document.getElementById('date');
 fetch(url_rate)
-  .then(function(response) {
-    response.json()
-      .then(function(data) {
-        result_rate = data; // Stocke le résultat de l'API url_rate dans la variable result_rate
+    .then(function(response) {
+        response.json()
+            .then(function(data) {
+                the_date.innerText = data.date;
+            })
+    })
 
-        // Structure le résultat dans le tableau currencies
-        for (currency in result_rate.rates) {
-          currencies.push({
-            name: currency,
-            rate: result_rate.rates[currency]
-          });
-        }
+// Récupération devises, pays associés et de leurs informations
+fetch(url_rate)
+    .then(function(response) {
+        response.json()
+            .then(function(data) {
+                result_rate = data; // Stocke le résultat de l'API url_rate dans la variable result_rate
 
-        fetch(url_country)
-          .then(function(response) {
-            response.json()
-              .then(function(data) {
-                result_country = data; // Stocke le résultat de l'API url_country dans la variable result_country
-
-                // Parcourt tous les pays présents dans result_country
-                for (country in result_country) {
-                  rate_country = result_country[country].currencies[0].code; // Stocke la devise associée au pays dans la variable rate_country
-
-                  // Parcourt le tableau currencies
-                  for (i in currencies) {
-
-                    // On regarde si le taux de change de la devise du pays est stocké dans le tableau currencies
-                    // Si c'est le cas, il remplit des informations sur le pays dans le tableau row
-                    // On s'assure d'abord que les attributs dans l'api ne soient pas vides
-                     if (rate_country == currencies[i].name){
-                       if ((result_country[country].capital != "")
-                       & (result_country[country].region != "")
-                       & (result_country[country].population != "0")
-                       & (result_country[country].currencies[0].symbol != null)){
-                        var row = tableau.insertRow(1);
-                        var c1 = row.insertCell(0);
-                        var c2 = row.insertCell(1);
-                        var c3 = row.insertCell(2);
-                        var c4 = row.insertCell(3);
-                        var c5 = row.insertCell(4);
-                        var c6 = row.insertCell(5);
-                        var c7 = row.insertCell(6);
-                        c1.innerText = result_country[country].name; // Renseigne le nom du pays
-                        c2.innerHTML = balise_img_start + result_country[country].flag + balise_img_end; // Renseigne le drapeau du pays
-                        c3.innerText = result_country[country].capital; // Renseigne la capitale du pays
-                        c4.innerText = result_country[country].region; // Renseigne le continent sur lequel se situe le pays
-                        c5.innerText = result_country[country].population; // Renseigne le nombre d'habitants du pays
-                        c6.innerText = currencies[i].name; // Renseigne le nom de la devise utilisée dans le pays
-                        c7.innerText = currencies[i].rate + " " + result_country[country].currencies[0].symbol; // Renseigne la valeur d'un euro dans la devise du pays précisée par le symbole associé
-                      }
-                    }
-                  }
+                // Structure le résultat dans le tableau currencies
+                for (currency in result_rate.rates) {
+                    currencies.push({
+                        name: currency,
+                        rate: result_rate.rates[currency]
+                    });
                 }
-              })
-          })
-      })
-  });
 
-// Affiche la date :
-var the_date = document.getElementById('date');
-var d = new Date();
-var mm = d.getMonth() + 1;
-var dd = d.getDate();
-var yy = d.getFullYear();
-var myDateString = yy + '-' + mm + '-' + dd;
-the_date.innerText = myDateString;
+                fetch(url_country)
+                    .then(function(response) {
+                        response.json()
+                            .then(function(data) {
+                                result_country = data; // Stocke le résultat de l'API url_country dans la variable result_country
 
+                                // Parcourt tous les pays présents dans result_country
+                                for (country in result_country) {
+                                    rate_country = result_country[country].currencies[0].code; // Stocke la devise associée au pays dans la variable rate_country
 
+                                    // Parcourt le tableau currencies
+                                    for (i in currencies) {
+
+                                        // On regarde si le taux de change de la devise du pays est stocké dans le tableau currencies
+                                        // Si c'est le cas, il remplit des informations sur le pays dans le tableau d'affichage
+                                        // On s'assure d'abord que les attributs dans l'api ne soient pas vides
+                                        if (rate_country == currencies[i].name) {
+                                            if ((result_country[country].capital != "") &
+                                                (result_country[country].region != "") &
+                                                (result_country[country].population != "0") &
+                                                (result_country[country].currencies[0].symbol != null)) {
+                                                let row = tableau.insertRow();
+                                                let c1 = row.insertCell(0);
+                                                let c2 = row.insertCell(1);
+                                                let c3 = row.insertCell(2);
+                                                let c4 = row.insertCell(3);
+                                                let c5 = row.insertCell(4);
+                                                let c6 = row.insertCell(5);
+                                                let c7 = row.insertCell(6);
+                                                c1.innerText = result_country[country].name; // Renseigne le nom du pays
+                                                c2.innerHTML = balise_img_start + result_country[country].flag + balise_img_end; // Renseigne le drapeau du pays
+                                                c3.innerText = result_country[country].capital; // Renseigne la capitale du pays
+                                                c4.innerText = result_country[country].region; // Renseigne le continent sur lequel se situe le pays
+                                                c5.innerText = result_country[country].population; // Renseigne le nombre d'habitants du pays
+                                                c6.innerText = currencies[i].name; // Renseigne le nom de la devise utilisée dans le pays
+                                                c7.innerText = currencies[i].rate + " " + result_country[country].currencies[0].symbol; // Renseigne la valeur d'un euro dans la devise du pays précisée par le symbole associé
+                                            }
+                                        }
+                                    }
+                                }
+                            })
+                    })
+            })
+    });
+
+// Fonction qui permetant de chercher un pays par son nom dans le tableau
 const Fonction_recherche = () => {
-  let filter = document.getElementById('Entree').value.toUpperCase();
-  let maTable = document.getElementById('tableau');
-  let tr = maTable.getElementsByTagName('tr');
+    let filter = document.getElementById('search').value.toUpperCase();
+    let table = document.getElementById('tableau');
+    let tr = table.getElementsByTagName('tr');
 
-  for (var i = 0; i < tr.length; i++) {
-    let td = tr[i].getElementsByTagName('td')[0];
+    document.getElementsByClassName("title")[0].scrollIntoView(); // Permet de remonter en haut pour visualiser le(s) resultat(s)
 
-    if (td) {
-      let textvalue = td.textContent || td.innerHTML;
-      if (textvalue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+    for (let i = 0; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td')[0];
+
+        if (td) {
+            let textvalue = td.textContent || td.innerHTML;
+
+            if (textvalue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
     }
-  }
 }
