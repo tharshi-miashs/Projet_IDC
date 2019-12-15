@@ -89,15 +89,16 @@ var yy = d.getFullYear();
 var myDateString = yy + '-' + mm + '-' + dd;
 the_date.innerText = myDateString;
 
-
+// On créé une fonction qui permet de rechercher un pays 
 const Fonction_recherche = () => {
-  let filter = document.getElementById('Entree').value.toUpperCase();
-  let maTable = document.getElementById('tableau');
-  let tr = maTable.getElementsByTagName('tr');
+  let filter = document.getElementById('Entree').value.toUpperCase();// on stocke dans filter, l'information récupéré d'une balise identifiée par id 'Entree'. C'est la chaine de caracères entrée par l'utilisateur. On l'a transforme en majuscule. 
+  let maTable = document.getElementById('tableau');// On stocke dans maTable l'information récupérée d'une balise identifié par 'tableau'. C'est notre table. 
+  let tr = maTable.getElementsByTagName('tr');// On stocke dans tr la liste des éléments de la balise tr (les lignes) de notre table. 
 
-  for (var i = 0; i < tr.length; i++) {
-    let td = tr[i].getElementsByTagName('td')[0];
-
+  for (var i = 0; i < tr.length; i++) { // pour chercher une chaine de caractères dans toutes les lignes de la table
+    let td = tr[i].getElementsByTagName('td')[0];// on stocke dans td la ième élément de la première colonne (country) de notre table
+	
+	// on teste si la ième élément de la première colonne (country) est dans la colonne country de notre table, la ligne de ce pays s'affiche sinon, il ne s'affiche pas.
     if (td) {
       let textvalue = td.textContent || td.innerHTML;
       if (textvalue.toUpperCase().indexOf(filter) > -1) {
