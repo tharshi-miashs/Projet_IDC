@@ -1,0 +1,87 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url('../images/bg.jpg');
+    background-size: contain;
+    background-attachment: fixed;
+    padding-top: 2rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: #ffffff;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+
+/* Not required for template or sticky footer method. */
+
+body>.container {
+    padding: 40px 15px 0;
+}
+
+.footer>.container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.bg-custom {
+    background-color: #111111;
+}
+
+#flag {
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #111111;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.title {
+    background-image: url('../images/banner.jpg');
+    background-size: cover;
+    background-position: 15% 45%;
+}
+
+.text-title {
+    margin-top: 2rem;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 3px 1px #111111;
+}
+
+.text-date {
+    margin-top: 2rem;
+    text-align: left;
+    color: #cd3725;
+}
+
+.mb-10 {
+    margin-bottom: 5rem !important;
+}
