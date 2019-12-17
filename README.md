@@ -3,7 +3,7 @@
 ## Introduction
 Projet réalisé dans le cadre du module **Intégration de données connectées** par :<br/>
 * Caroline MARTIN<br/>
-* Marwa EL ATRACHE<br/>
+* Marwa ELATRACHE<br/>
 * Omar SECK<br/>
 * Tharshika NAGARATNAM<br/>
 * Marine PLA-COMES<br/>
